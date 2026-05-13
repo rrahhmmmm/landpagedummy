@@ -319,6 +319,47 @@
     50% { opacity: 0.7; transform: scale(1) translateY(-20px); }
   }
 
+  /* Founder 3D Carousel */
+  .founder-card {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -140px;
+    margin-top: -220px;
+    width: 280px;
+    transition: transform 0.8s cubic-bezier(.2,.7,.2,1), opacity 0.8s cubic-bezier(.2,.7,.2,1), filter 0.8s ease;
+    transform-style: preserve-3d;
+    will-change: transform, opacity;
+  }
+  @media (min-width: 768px) {
+    .founder-card { width: 320px; margin-left: -160px; margin-top: -230px; }
+  }
+  .founder-card__inner {
+    padding: 2rem 1.5rem;
+    background: rgba(244,241,236,0.03);
+    border: 1px solid rgba(199,154,79,0.12);
+    border-radius: 1.5rem;
+    backdrop-filter: blur(4px);
+    transition: border-color 0.5s ease, background 0.5s ease, box-shadow 0.5s ease;
+  }
+  .founder-card.active .founder-card__inner {
+    border-color: rgba(199,154,79,0.4);
+    background: rgba(244,241,236,0.06);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 40px rgba(168,124,46,0.08);
+  }
+  .carousel-dot {
+    background: rgba(199,154,79,0.25);
+    border: 1.5px solid rgba(199,154,79,0.4);
+    transition: all 0.4s ease;
+    cursor: pointer;
+  }
+  .carousel-dot.active {
+    background: var(--gold);
+    border-color: var(--gold);
+    transform: scale(1.6);
+    box-shadow: 0 0 12px rgba(168,124,46,0.4);
+  }
+
   *:focus { outline: none; }
   a:focus-visible, button:focus-visible { outline: 1px solid var(--gold); outline-offset: 4px; }
 </style>
@@ -337,6 +378,9 @@
   <button class="side-nav__dot" data-target="practice" aria-label="Practice">
     <span class="side-nav__label">Practice</span>
   </button>
+  <button class="side-nav__dot" data-target="foundation" aria-label="Foundation">
+    <span class="side-nav__label">Team</span>
+  </button>
   <button class="side-nav__dot" data-target="track" aria-label="Track Record">
     <span class="side-nav__label">Track</span>
   </button>
@@ -353,6 +397,7 @@
     <a href="#top" class="font-logo text-2xl cursor-interactive">RAWA</a>
     <div class="hidden md:flex items-center gap-12 meta">
       <a href="#practice" class="nav-link hover:opacity-70 transition cursor-interactive">Practice</a>
+      <a href="#foundation" class="nav-link hover:opacity-70 transition cursor-interactive">Team</a>
       <a href="#track" class="nav-link hover:opacity-70 transition cursor-interactive">Track record</a>
       <a href="#contact" class="nav-link hover:opacity-70 transition cursor-interactive">Contact</a>
     </div>
@@ -656,6 +701,100 @@
     <div class="mt-16 flex justify-between items-center">
       <span class="meta text-navy-40">Six disciplines, one team, no outsourcing</span>
       <span class="meta text-navy-40 hidden md:inline">N° 02 / 04</span>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================== -->
+<!-- 2b. THE FOUNDATION — Founders 3D Carousel               -->
+<!-- ====================================================== -->
+<section id="foundation" class="relative bg-navy py-32 md:py-48 overflow-hidden">
+  <div class="absolute -top-10 -left-20 wordmark-ghost" style="font-size: 22vw;">TEAM</div>
+
+  <div class="relative max-w-[1400px] mx-auto px-10 md:px-20">
+    <!-- Header -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-20 md:mb-28">
+      <div class="md:col-span-11">
+        <div class="meta text-gold-soft mb-10 flex items-center gap-4 foundation-reveal">
+          <span class="w-12 h-px bg-gold-soft"></span>
+          <span>The Foundation</span>
+        </div>
+        <h2 class="font-display lowercase leading-[0.92] text-cream foundation-reveal"
+            style="font-size: clamp(2.75rem, 8vw, 7rem); font-weight: 400;">
+          the people<br/>
+          <span class="italic text-gold-soft">behind</span> the<br/>
+          vision.
+        </h2>
+        <p class="mt-12 max-w-xl font-body text-lg md:text-xl text-cream-70 leading-relaxed foundation-reveal" style="font-weight: 300;">
+          Four founders. One shared conviction — that spaces should serve the people inside them.
+        </p>
+      </div>
+    </div>
+
+    <!-- 3D Carousel wrapper — tall for scroll pinning -->
+    <div id="founderSection" style="height: 200vh;">
+      <div id="founderCarousel" class="relative flex items-center justify-center" style="height: 100vh; perspective: 1200px;">
+        <div id="carouselTrack" class="relative flex items-center justify-center" style="width: 100%; height: 480px; transform-style: preserve-3d;">
+
+          <div class="founder-card" data-index="0">
+            <div class="founder-card__inner">
+              <div class="circle-mask w-48 h-48 md:w-56 md:h-56 mx-auto mb-6 overflow-hidden" style="border: 2px solid rgba(199,154,79,0.3);">
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=face" alt="Founder 1" class="w-full h-full object-cover">
+              </div>
+              <h4 class="font-display lowercase text-2xl md:text-3xl text-cream text-center mb-2">andi rahmat</h4>
+              <div class="meta text-gold-soft text-center">Chief Executive Officer</div>
+              <div class="meta text-cream-50 text-center mt-2">Strategy · Vision · Growth</div>
+            </div>
+          </div>
+
+          <div class="founder-card" data-index="1">
+            <div class="founder-card__inner">
+              <div class="circle-mask w-48 h-48 md:w-56 md:h-56 mx-auto mb-6 overflow-hidden" style="border: 2px solid rgba(199,154,79,0.3);">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=face" alt="Founder 2" class="w-full h-full object-cover">
+              </div>
+              <h4 class="font-display lowercase text-2xl md:text-3xl text-cream text-center mb-2">sari dewi</h4>
+              <div class="meta text-gold-soft text-center">Chief Design Officer</div>
+              <div class="meta text-cream-50 text-center mt-2">Architecture · Interiors · FF&E</div>
+            </div>
+          </div>
+
+          <div class="founder-card" data-index="2">
+            <div class="founder-card__inner">
+              <div class="circle-mask w-48 h-48 md:w-56 md:h-56 mx-auto mb-6 overflow-hidden" style="border: 2px solid rgba(199,154,79,0.3);">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face" alt="Founder 3" class="w-full h-full object-cover">
+              </div>
+              <h4 class="font-display lowercase text-2xl md:text-3xl text-cream text-center mb-2">budi santoso</h4>
+              <div class="meta text-gold-soft text-center">Chief Operations Officer</div>
+              <div class="meta text-cream-50 text-center mt-2">Operations · Systems · Scale</div>
+            </div>
+          </div>
+
+          <div class="founder-card" data-index="3">
+            <div class="founder-card__inner">
+              <div class="circle-mask w-48 h-48 md:w-56 md:h-56 mx-auto mb-6 overflow-hidden" style="border: 2px solid rgba(199,154,79,0.3);">
+                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&crop=face" alt="Founder 4" class="w-full h-full object-cover">
+              </div>
+              <h4 class="font-display lowercase text-2xl md:text-3xl text-cream text-center mb-2">maya putri</h4>
+              <div class="meta text-gold-soft text-center">Chief Wellness Officer</div>
+              <div class="meta text-cream-50 text-center mt-2">Wellness · Programs · Experience</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Progress dots -->
+        <div class="absolute bottom-12 left-0 right-0 flex justify-center gap-3" id="carouselDots">
+          <button class="w-2.5 h-2.5 rounded-full carousel-dot active" data-dot="0" aria-label="Founder 1"></button>
+          <button class="w-2.5 h-2.5 rounded-full carousel-dot" data-dot="1" aria-label="Founder 2"></button>
+          <button class="w-2.5 h-2.5 rounded-full carousel-dot" data-dot="2" aria-label="Founder 3"></button>
+          <button class="w-2.5 h-2.5 rounded-full carousel-dot" data-dot="3" aria-label="Founder 4"></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-8 pt-8 border-t border-cream-15 flex justify-between items-center">
+      <span class="meta text-cream-35">Four founders. One team. No shortcuts.</span>
+      <span class="meta text-cream-35 hidden md:inline">N° 02b / 04</span>
     </div>
   </div>
 </section>
@@ -1038,6 +1177,99 @@ document.querySelectorAll('.pillar').forEach(p => {
     if (!wasActive) p.classList.add('active');
   });
 });
+
+/* ============================================================
+   4b. FOUNDATION — 3D Carousel on Scroll
+   ============================================================ */
+gsap.from('.foundation-reveal', {
+  y: 30, opacity: 0, duration: 0.8,
+  stagger: 0.15,
+  ease: 'power3.out',
+  scrollTrigger: { trigger: '.foundation-reveal', start: 'top 80%' }
+});
+
+(function() {
+  const cards = document.querySelectorAll('.founder-card');
+  const dots = document.querySelectorAll('.carousel-dot');
+  const totalCards = cards.length;
+  const radius = isMobile ? 200 : 350;
+  let currentAngle = 0;
+
+  function positionCards(angle) {
+    const angleStep = (Math.PI * 2) / totalCards;
+
+    cards.forEach((card, i) => {
+      const cardAngle = angle + i * angleStep;
+      const x = Math.sin(cardAngle) * radius;
+      const z = Math.cos(cardAngle) * radius;
+      const rotateY = -cardAngle * (180 / Math.PI);
+
+      // z: -radius (back) to +radius (front)
+      const normalizedZ = (z + radius) / (2 * radius); // 0 = back, 1 = front
+      const scale = 0.55 + normalizedZ * 0.45;
+      const opacity = 0.15 + normalizedZ * 0.85;
+      const zIndex = Math.round(normalizedZ * 100);
+
+      card.style.transform = `translateX(${x}px) translateZ(${z}px) rotateY(${rotateY}deg) scale(${scale})`;
+      card.style.opacity = opacity;
+      card.style.zIndex = zIndex;
+      card.style.filter = normalizedZ > 0.85 ? 'none' : `blur(${(1 - normalizedZ) * 2.5}px)`;
+
+      if (normalizedZ > 0.85) {
+        card.classList.add('active');
+      } else {
+        card.classList.remove('active');
+      }
+    });
+
+    // Update dots
+    const frontIndex = getFrontCardIndex(angle);
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === frontIndex);
+    });
+  }
+
+  function getFrontCardIndex(angle) {
+    const angleStep = (Math.PI * 2) / totalCards;
+    let bestIdx = 0;
+    let bestZ = -Infinity;
+    for (let i = 0; i < totalCards; i++) {
+      const z = Math.cos(angle + i * angleStep);
+      if (z > bestZ) { bestZ = z; bestIdx = i; }
+    }
+    return bestIdx;
+  }
+
+  // Initial position
+  positionCards(0);
+
+  // Scroll-driven rotation
+  ScrollTrigger.create({
+    trigger: '#founderSection',
+    start: 'top top',
+    end: 'bottom bottom',
+    pin: '#founderCarousel',
+    scrub: 0.6,
+    onUpdate: (self) => {
+      // Full rotation = scroll through entire section
+      currentAngle = self.progress * Math.PI * 2;
+      positionCards(currentAngle);
+    }
+  });
+
+  // Dot clicks — no-op since it's scroll driven, but nice visual feedback
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      const target = document.getElementById('founderSection');
+      if (target) {
+        const sectionTop = target.offsetTop;
+        const sectionHeight = target.offsetHeight - window.innerHeight;
+        const scrollTo = sectionTop + (i / totalCards) * sectionHeight;
+        window.scrollTo({ top: scrollTo, behavior: 'smooth' });
+      }
+    });
+  });
+})();
 
 /* ============================================================
    5. TRACK RECORD — GSAP reveals
