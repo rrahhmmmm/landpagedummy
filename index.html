@@ -360,12 +360,37 @@
     box-shadow: 0 0 12px rgba(168,124,46,0.4);
   }
 
+  /* Intro overlay */
+  body.intro-active { overflow: hidden !important; }
+  #introOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--navy);
+  }
+  #introText {
+    font-size: clamp(3.5rem, 12vw, 10rem);
+    color: var(--cream);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0;
+    will-change: transform, opacity, font-size, color;
+  }
+
   *:focus { outline: none; }
   a:focus-visible, button:focus-visible { outline: 1px solid var(--gold); outline-offset: 4px; }
 </style>
 </head>
 
 <body>
+
+<!-- INTRO OVERLAY -->
+<div id="introOverlay">
+  <div id="introText" class="font-logo">RAWA</div>
+</div>
 
 <!-- CUSTOM CURSOR -->
 <div class="cursor-dot" id="cursorDot"></div>
@@ -392,7 +417,7 @@
 <!-- ====================================================== -->
 <!-- NAV                                                     -->
 <!-- ====================================================== -->
-<nav class="fixed top-0 left-0 right-0 z-50 nav-blend">
+<nav id="mainNav" class="fixed top-0 left-0 right-0 z-50 nav-blend" style="opacity: 0;">
   <div class="max-w-[1400px] mx-auto px-10 md:px-20 py-8 flex items-center justify-between" style="color: var(--cream);">
     <a href="#top" class="font-logo text-2xl cursor-interactive">RAWA</a>
     <div class="hidden md:flex items-center gap-12 meta">
@@ -419,7 +444,7 @@
   <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(6,26,46,0.82) 0%, rgba(10,37,64,0.72) 50%, rgba(6,26,46,0.85) 100%);"></div>
 
   <!-- Ghost wordmark -->
-  <div class="absolute -right-32 wordmark-ghost" style="font-size: 32vw; top: -0.45em; line-height: 1;">RAWA</div>  
+  <div id="ghostWordmark" class="absolute wordmark-ghost" style="font-size: 32vw; top: -0.45em; left: 50%; transform: translateX(-50%); line-height: 1; opacity: 0;">RAWA</div>
 
   <div class="relative max-w-[1400px] mx-auto px-10 md:px-20 pt-48 pb-32 md:pt-56 md:pb-40 w-full text-cream">
 
@@ -741,9 +766,9 @@
               <div class="circle-mask w-48 h-48 md:w-56 md:h-56 mx-auto mb-6 overflow-hidden" style="border: 2px solid rgba(199,154,79,0.3);">
                 <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=face" alt="Founder 1" class="w-full h-full object-cover">
               </div>
-              <h4 class="font-display lowercase text-2xl md:text-3xl text-cream text-center mb-2">andi rahmat</h4>
-              <div class="meta text-gold-soft text-center">Chief Executive Officer</div>
-              <div class="meta text-cream-50 text-center mt-2">Strategy · Vision · Growth</div>
+              <h4 class="font-display lowercase text-2xl md:text-3xl text-cream text-center mb-2">Lily</h4>
+              <div class="meta text-gold-soft text-center">Strategy & BizDev</div>
+              <div class="meta text-cream-50 text-center mt-2">"Precision thinking, founder's heart"</div>
             </div>
           </div>
 
@@ -752,9 +777,9 @@
               <div class="circle-mask w-48 h-48 md:w-56 md:h-56 mx-auto mb-6 overflow-hidden" style="border: 2px solid rgba(199,154,79,0.3);">
                 <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=face" alt="Founder 2" class="w-full h-full object-cover">
               </div>
-              <h4 class="font-display lowercase text-2xl md:text-3xl text-cream text-center mb-2">sari dewi</h4>
-              <div class="meta text-gold-soft text-center">Chief Design Officer</div>
-              <div class="meta text-cream-50 text-center mt-2">Architecture · Interiors · FF&E</div>
+              <h4 class="font-display lowercase text-2xl md:text-3xl text-cream text-center mb-2">Faiz</h4>
+              <div class="meta text-gold-soft text-center">Finance & Technology </div>
+              <div class="meta text-cream-50 text-center mt-2">Architect, Builder, and techlogist - from blueprint to balance sheets</div>
             </div>
           </div>
 
@@ -763,9 +788,9 @@
               <div class="circle-mask w-48 h-48 md:w-56 md:h-56 mx-auto mb-6 overflow-hidden" style="border: 2px solid rgba(199,154,79,0.3);">
                 <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face" alt="Founder 3" class="w-full h-full object-cover">
               </div>
-              <h4 class="font-display lowercase text-2xl md:text-3xl text-cream text-center mb-2">budi santoso</h4>
-              <div class="meta text-gold-soft text-center">Chief Operations Officer</div>
-              <div class="meta text-cream-50 text-center mt-2">Operations · Systems · Scale</div>
+              <h4 class="font-display lowercase text-2xl md:text-3xl text-cream text-center mb-2">Biyo</h4>
+              <div class="meta text-gold-soft text-center">Operations & people</div>
+              <div class="meta text-cream-50 text-center mt-2">Where operational discipline meets the instinct to scale</div>
             </div>
           </div>
 
@@ -774,9 +799,9 @@
               <div class="circle-mask w-48 h-48 md:w-56 md:h-56 mx-auto mb-6 overflow-hidden" style="border: 2px solid rgba(199,154,79,0.3);">
                 <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&crop=face" alt="Founder 4" class="w-full h-full object-cover">
               </div>
-              <h4 class="font-display lowercase text-2xl md:text-3xl text-cream text-center mb-2">maya putri</h4>
-              <div class="meta text-gold-soft text-center">Chief Wellness Officer</div>
-              <div class="meta text-cream-50 text-center mt-2">Wellness · Programs · Experience</div>
+              <h4 class="font-display lowercase text-2xl md:text-3xl text-cream text-center mb-2">Helmi</h4>
+              <div class="meta text-gold-soft text-center">Creative & Experience</div>
+              <div class="meta text-cream-50 text-center mt-2">Creativity with purpose, spaces with soul</div>
             </div>
           </div>
 
@@ -1070,14 +1095,70 @@ if (!isMobile) {
 }
 
 /* ============================================================
-   2. HERO — GSAP reveals + parallax
+   2. INTRO ANIMATION + HERO REVEALS
    ============================================================ */
-gsap.from('.hero-reveal', {
-  y: 40, opacity: 0, duration: 1.2,
-  stagger: 0.2,
-  ease: 'power3.out',
-  delay: 0.3
+document.body.classList.add('intro-active');
+
+const introOverlay = document.getElementById('introOverlay');
+const introText = document.getElementById('introText');
+const ghostWordmark = document.getElementById('ghostWordmark');
+const mainNav = document.getElementById('mainNav');
+const sideNav = document.querySelector('.side-nav');
+if (sideNav) sideNav.style.opacity = '0';
+
+const introTL = gsap.timeline({
+  onComplete: () => {
+    introOverlay.remove();
+    document.body.classList.remove('intro-active');
+  }
 });
+
+introTL
+  // Phase 1: Fade in "RAWA" centered
+  .to(introText, {
+    opacity: 1,
+    duration: 0.8,
+    ease: 'power2.out'
+  })
+  // Phase 2: Hold
+  .to(introText, { duration: 0.4 })
+  // Phase 3: Scale up + move to ghost position + fade color
+  .to(introText, {
+    fontSize: '32vw',
+    color: 'rgba(244,241,236,0.045)',
+    letterSpacing: '0.05em',
+    y: '-45vh',
+    x: 0,
+    duration: 1.2,
+    ease: 'power3.inOut'
+  })
+  // Phase 4: Fade out overlay, reveal hero
+  .to(introOverlay, {
+    opacity: 0,
+    duration: 0.6,
+    ease: 'power2.inOut'
+  }, '-=0.4')
+  // Show ghost wordmark at same time
+  .to(ghostWordmark, {
+    opacity: 1,
+    duration: 0.01
+  }, '<')
+  // Phase 5: Reveal nav + side nav + hero elements
+  .to(mainNav, {
+    opacity: 1,
+    duration: 0.8,
+    ease: 'power2.out'
+  }, '-=0.3')
+  .to(sideNav, {
+    opacity: 1,
+    duration: 0.8,
+    ease: 'power2.out'
+  }, '<')
+  .from('.hero-reveal', {
+    y: 40, opacity: 0, duration: 1.2,
+    stagger: 0.2,
+    ease: 'power3.out'
+  }, '-=0.6');
 
 gsap.to('#heroText', {
   y: -80,
