@@ -367,9 +367,10 @@
     inset: 0;
     z-index: 9998;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: var(--navy);
+    background: var(--navy-deep);
   }
   #introText {
     font-size: clamp(3.5rem, 12vw, 10rem);
@@ -378,6 +379,18 @@
     text-transform: uppercase;
     opacity: 0;
     will-change: transform, opacity, font-size, color;
+  }
+  #introSub {
+    color: var(--gold-soft);
+    margin-top: 1rem;
+    font-size: clamp(0.75rem, 1.2vw, 1rem);
+    letter-spacing: 0.08em;
+    text-align: center;
+    line-height: 1.8;
+  }
+  #introSub span {
+    display: inline-block;
+    opacity: 0;
   }
 
   *:focus { outline: none; }
@@ -390,6 +403,7 @@
 <!-- INTRO OVERLAY -->
 <div id="introOverlay">
   <div id="introText" class="font-logo">RAWA</div>
+  <p id="introSub" class="meta">Form without substance is an empty space. Substance without form has nowhere to live.</p>
 </div>
 
 <!-- CUSTOM CURSOR -->
@@ -470,12 +484,12 @@
       </div>
 
       <!-- RIGHT — decorative circle -->
-      <div class="md:col-span-4 relative hidden md:block">
+      <!-- <div class="md:col-span-4 relative hidden md:block">
         <div class="circle-mask w-64 h-64 ml-auto overflow-hidden hero-reveal" style="border: 1px solid rgba(199,154,79,0.3);">
           <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=500&h=500&fit=crop&crop=center" alt="Wellness" class="w-full h-full object-cover" style="opacity: 0.7;">
         </div>
         <div class="absolute -top-8 -left-8 w-32 h-32 rounded-full border border-gold-40"></div>
-      </div>
+      </div> -->
     </div>
 
     <!-- Sub-copy + CTA -->
@@ -514,9 +528,6 @@
   <div class="relative max-w-[1400px] mx-auto px-10 md:px-20">
     <!-- Header -->
     <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-24 md:mb-32">
-      <div class="md:col-span-1 hidden md:block">
-        <div class="meta text-gold vertical-rl">N° 02 / what we do</div>
-      </div>
       <div class="md:col-span-11">
         <div class="md:hidden meta text-gold mb-8">N° 02 — What we do</div>
         <h2 class="font-display lowercase leading-[0.92] text-navy practice-heading"
@@ -1106,6 +1117,14 @@ const mainNav = document.getElementById('mainNav');
 const sideNav = document.querySelector('.side-nav');
 if (sideNav) sideNav.style.opacity = '0';
 
+// Split intro sub-text into individual letter spans
+const introSub = document.getElementById('introSub');
+const subText = introSub.textContent;
+introSub.innerHTML = subText.split('').map(ch =>
+  ch === ' ' ? ' ' : `<span>${ch}</span>`
+).join('');
+const subChars = introSub.querySelectorAll('span');
+
 const introTL = gsap.timeline({
   onComplete: () => {
     introOverlay.remove();
@@ -1120,8 +1139,22 @@ introTL
     duration: 0.8,
     ease: 'power2.out'
   })
-  // Phase 2: Hold
-  .to(introText, { duration: 0.4 })
+  // Phase 2: Per-letter reveal of sub-text
+  .to(subChars, {
+    opacity: 0.7,
+    y: 0,
+    duration: 0.4,
+    stagger: 0.025,
+    ease: 'power2.out'
+  })
+  // Phase 2b: Hold for reading
+  .to(introSub, { duration: 1.0 })
+  // Phase 2c: Fade out sub-text
+  .to(subChars, {
+    opacity: 0,
+    duration: 0.5,
+    ease: 'power2.in'
+  })
   // Phase 3: Scale up + move to ghost position + fade color
   .to(introText, {
     fontSize: '32vw',
