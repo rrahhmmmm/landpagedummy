@@ -119,6 +119,9 @@
   .wordmark-ghost-warm { color: rgba(168,124,46,0.06); }
 
   .circle-mask { border-radius: 50%; overflow: hidden; }
+  .tl2d-slideshow { position: relative; }
+  .tl2d-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 800ms ease; }
+  .tl2d-slide.is-active { opacity: 1; }
   .hair { height: 1px; background: currentColor; opacity: 0.2; }
   .nav-blend { mix-blend-mode: difference; }
   .vertical-rl { writing-mode: vertical-rl; transform: rotate(180deg); }
@@ -765,7 +768,7 @@
           <div class="founder-card" data-index="0">
             <div class="founder-card__inner">
               <div class="circle-mask w-48 h-48 md:w-56 md:h-56 mx-auto mb-6 overflow-hidden" style="border: 2px solid rgba(199,154,79,0.3);">
-                <img src="assets/img/photo-1560250097-0b93528c311a-400x400-face.jpg" alt="cililiyfotonyapls" class="w-full h-full object-cover">
+                <img src="assets/img/cilily.jpeg" alt="cililiyfotonyapls" class="w-full h-full object-cover" style="object-position: -5% top;">
               </div>
               <h4 class="font-display lowercase text-2xl md:text-3xl text-cream text-center mb-2">Lily</h4>
               <div class="meta text-gold-soft text-center">Strategy & BizDev</div>
@@ -870,9 +873,10 @@
     <div class="tl2d-node" data-year="YYYY">
       <div class="tl2d-dot"></div>
       <div class="tl2d-content">
-        <div class="circle-mask w-28 h-28 mx-auto mb-4 overflow-hidden">
-          <img src="assets/img/photo-1544161515-4ab6ce6db874-300x300-center.jpg" alt="Urban Dhukun" class="w-full h-full object-cover">
-        </div>
+        <div class="circle-mask w-28 h-28 mx-auto mb-4 overflow-hidden tl2d-slideshow"
+             data-slides="0 (4).png,0 (5).png,0 (6).png"
+             data-slide-base="assets/img/trackrecord/urban/"
+             data-slide-interval="2000"></div>
         <div class="meta text-gold-soft mb-2">YYYY</div>
         <h4 class="font-display lowercase text-xl text-cream mb-1 leading-snug">
           urban dhukun<br>bhumi<br>urban healing
@@ -885,9 +889,10 @@
     <div class="tl2d-node" data-year="YYYY">
       <div class="tl2d-dot"></div>
       <div class="tl2d-content">
-        <div class="circle-mask w-28 h-28 mx-auto mb-4 overflow-hidden">
-          <img src="assets/img/photo-1515377905703-c4788e51af15-300x300-center.jpg" alt="Jemari" class="w-full h-full object-cover">
-        </div>
+        <div class="circle-mask w-28 h-28 mx-auto mb-4 overflow-hidden tl2d-slideshow"
+             data-slides="j1.jpeg,j2.jpeg,j3.jpeg,j4.jpeg,j5.jpeg,j6.jpeg"
+             data-slide-base="assets/img/trackrecord/jemari/"
+             data-slide-interval="2000"></div>
         <div class="meta text-gold-soft mb-2">YYYY</div>
         <h4 class="font-display lowercase text-xl text-cream mb-1">jemari</h4>
         <div class="meta text-cream-50 mb-3">TBA</div>
@@ -898,9 +903,10 @@
     <div class="tl2d-node" data-year="YYYY">
       <div class="tl2d-dot"></div>
       <div class="tl2d-content">
-        <div class="circle-mask w-28 h-28 mx-auto mb-4 overflow-hidden">
-          <img src="assets/img/photo-1600334129128-685c5582fd35-300x300-center.jpg" alt="Wellness Cinere" class="w-full h-full object-cover">
-        </div>
+        <div class="circle-mask w-28 h-28 mx-auto mb-4 overflow-hidden tl2d-slideshow"
+             data-slides="p.jpeg,p1.jpeg,p2.jpeg,p3.jpeg,p4.jpeg,p5.jpeg"
+             data-slide-base="assets/img/trackrecord/pola/"
+             data-slide-interval="2000"></div>
         <div class="meta text-gold-soft mb-2">YYYY</div>
         <h4 class="font-display lowercase text-xl text-cream mb-1">wellness cinere</h4>
         <div class="meta text-cream-50 mb-3">TBA</div>
@@ -911,9 +917,10 @@
     <div class="tl2d-node" data-year="YYYY">
       <div class="tl2d-dot"></div>
       <div class="tl2d-content">
-        <div class="circle-mask w-28 h-28 mx-auto mb-4 overflow-hidden">
-          <img src="assets/img/photo-1540555700478-4be289fbec6d-300x300-center.jpg" alt="Amarta" class="w-full h-full object-cover">
-        </div>
+        <div class="circle-mask w-28 h-28 mx-auto mb-4 overflow-hidden tl2d-slideshow"
+             data-slides="a1.jpeg,a2.jpeg,a3.jpeg"
+             data-slide-base="assets/img/trackrecord/amarta/"
+             data-slide-interval="2000"></div>
         <div class="meta text-gold-soft mb-2">YYYY</div>
         <h4 class="font-display lowercase text-xl text-cream mb-1">amarta</h4>
         <div class="meta text-cream-50 mb-3">TBA</div>
@@ -932,7 +939,7 @@
       <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-20">
         <div class="md:col-span-5 relative featured-reveal">
           <div class="circle-mask aspect-square w-full max-w-md overflow-hidden">
-            <img src="assets/img/photo-1571019613454-1cb2f99b2d8b-700x700-center.jpg" alt="Pola Wellness" class="w-full h-full object-cover">
+            <img src="assets/img/toskir.jpeg" alt="Pola Wellness" class="w-full h-full object-cover">
           </div>
           <div class="absolute -bottom-8 -right-8 w-32 h-32 rounded-full border border-gold-40"></div>
         </div>
@@ -1396,10 +1403,14 @@ gsap.from('.featured-reveal', {
    ============================================================ */
 if (!isMobile && window.THREE) {
   const timelineData = [
-    { year: 'YYYY', name: 'urban dhukun<br>bhumi<br>urban healing', loc: 'TBA', desc: '—', img: 'assets/img/photo-1544161515-4ab6ce6db874-400x400.jpg' },
-    { year: 'YYYY', name: 'amarta',          loc: 'TBA', desc: '—', img: 'assets/img/photo-1515377905703-c4788e51af15-400x400.jpg' },
-    { year: 'YYYY', name: 'wellness cinere', loc: 'TBA', desc: '—', img: 'assets/img/photo-1600334129128-685c5582fd35-400x400.jpg' },
-    { year: 'YYYY', name: 'amarta',          loc: 'TBA', desc: '—', img: 'assets/img/photo-1540555700478-4be289fbec6d-400x400.jpg' }
+    { year: 'YYYY', name: 'urban dhukun<br>bhumi<br>urban healing', loc: 'TBA', desc: '—',
+      base: 'assets/img/trackrecord/urban/',  slides: ['0 (4).png','0 (5).png','0 (6).png'] },
+    { year: 'YYYY', name: 'jemari',          loc: 'TBA', desc: '—',
+      base: 'assets/img/trackrecord/jemari/', slides: ['j1.jpeg','j2.jpeg','j3.jpeg','j4.jpeg','j5.jpeg','j6.jpeg'] },
+    { year: 'YYYY', name: 'wellness cinere', loc: 'TBA', desc: '—',
+      base: 'assets/img/trackrecord/pola/',   slides: ['p.jpeg','p1.jpeg','p2.jpeg','p3.jpeg','p4.jpeg','p5.jpeg'] },
+    { year: 'YYYY', name: 'amarta',          loc: 'TBA', desc: '—',
+      base: 'assets/img/trackrecord/amarta/', slides: ['a1.jpeg','a2.jpeg','a3.jpeg'] }
   ];
 
   const wrap = document.getElementById('timeline-3d-wrap');
@@ -1503,21 +1514,45 @@ if (!isMobile && window.THREE) {
       transparent: true, opacity: 0.3, side: THREE.DoubleSide
     });
 
-    loader.load(
-      item.img,
-      (tex) => { mat.map = tex; mat.needsUpdate = true; },
+    const textures = item.slides.map(file => loader.load(
+      item.base + file,
+      (tex) => { mat.needsUpdate = true; },
       undefined,
-      (err) => console.error(`[Three.js] Failed to load texture: ${item.img}`, err)
-    );
+      (err) => console.error(`[Three.js] Failed to load texture: ${item.base + file}`, err)
+    ));
+    mat.map = textures[0];
+    mat.needsUpdate = true;
 
     const plane = new THREE.Mesh(geo, mat);
     plane.position.set(pos.x, pos.y + yOffset, pos.z + zTilt);
     plane.rotation.y = zTilt * 1.5;
-    plane.userData = { baseY: pos.y + yOffset, index: i, baseOpacity: 0.3 };
+    plane.userData = { baseY: pos.y + yOffset, index: i, baseOpacity: 0.3, textures: textures, slideIdx: 0 };
     photoGroup.add(plane);
     photoPlanes.push(plane);
   });
   scene.add(photoGroup);
+
+  // Auto-cycle slideshow per plane (match mobile 2s interval, ~800ms total crossfade)
+  const SLIDE_INTERVAL = 2000;
+  const FADE_DUR = 0.4;
+  photoPlanes.forEach((plane, i) => {
+    const textures = plane.userData.textures;
+    if (!textures || textures.length < 2) return;
+    setTimeout(() => {
+      setInterval(() => {
+        const mat = plane.material;
+        gsap.to(mat, {
+          opacity: 0, duration: FADE_DUR, ease: 'power2.in',
+          onComplete: () => {
+            plane.userData.slideIdx = (plane.userData.slideIdx + 1) % textures.length;
+            mat.map = textures[plane.userData.slideIdx];
+            mat.needsUpdate = true;
+            gsap.to(mat, { opacity: plane.userData.baseOpacity, duration: FADE_DUR, ease: 'power2.out' });
+          }
+        });
+      }, SLIDE_INTERVAL);
+    }, i * 500);
+  });
 
   // HTML overlays
   const overlayContainer = document.getElementById('tl-overlays');
@@ -1649,6 +1684,29 @@ if (!isMobile && window.THREE) {
    7. MOBILE 2D TIMELINE — GSAP reveals
    ============================================================ */
 if (isMobile) {
+  document.querySelectorAll('.tl2d-slideshow[data-slides]').forEach(el => {
+    const base = el.dataset.slideBase || '';
+    const files = el.dataset.slides.split(',').map(s => s.trim()).filter(Boolean);
+    const interval = parseInt(el.dataset.slideInterval, 10) || 3000;
+    if (files.length < 2) return;
+    el.innerHTML = '';
+    const imgs = files.map((file, i) => {
+      const img = document.createElement('img');
+      img.src = base + file;
+      img.alt = '';
+      img.className = 'tl2d-slide w-full h-full object-cover' + (i === 0 ? ' is-active' : '');
+      img.loading = 'lazy';
+      el.appendChild(img);
+      return img;
+    });
+    let idx = 0;
+    setInterval(() => {
+      imgs[idx].classList.remove('is-active');
+      idx = (idx + 1) % imgs.length;
+      imgs[idx].classList.add('is-active');
+    }, interval);
+  });
+
   document.querySelectorAll('.tl2d-node').forEach((node, i) => {
     gsap.to(node, {
       opacity: 1, y: 0, duration: 0.6,
