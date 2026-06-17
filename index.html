@@ -10,9 +10,7 @@
 <link href="assets/fonts/fonts.css" rel="stylesheet">
 
 <script src="assets/libs/lucide.min.js"></script>
-<!-- Three.js -->
 <script src="assets/libs/three.min.js"></script>
-<!-- GSAP + ScrollTrigger -->
 <script src="assets/libs/gsap.min.js"></script>
 <script src="assets/libs/ScrollTrigger.min.js"></script>
 <script src="assets/libs/ScrollToPlugin.min.js"></script>
@@ -436,9 +434,7 @@
   </button>
 </div>
 
-<!-- ====================================================== -->
-<!-- NAV                                                     -->
-<!-- ====================================================== -->
+<!-- nav -->
 <nav id="mainNav" class="fixed top-0 left-0 right-0 z-50 nav-blend" style="opacity: 0;">
   <div class="max-w-[1400px] mx-auto px-10 md:px-20 py-8 flex items-center justify-between" style="color: var(--cream);">
     <a href="#top" class="font-logo text-2xl cursor-interactive">RAWA</a>
@@ -452,27 +448,19 @@
   </div>
 </nav>
 
-<!-- ====================================================== -->
-<!-- 1. HERO — Video Background                              -->
-<!-- ====================================================== -->
+<!-- hero -->
 <section id="top" class="relative h-screen-dvh overflow-hidden flex items-center">
-  <!-- Video Background -->
   <video autoplay muted loop playsinline id="heroVideo"
          class="absolute inset-0 w-full h-full object-cover object-center"
          poster="assets/img/photo-1600334089648-b0d9d3028eb2-1920x1080.jpg">
     <source src="bgrawa_fix.mp4" type="video/mp4">
   </video>
-  <!-- Overlay -->
-  <!-- <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(6,26,46,0.82) 0%, rgba(10,37,64,0.72) 50%, rgba(6,26,46,0.85) 100%);"></div> -->
 
-  <!-- need review ghostmark -->
-  <!-- Ghost wordmark -->
   <div id="ghostWordmark" class="absolute wordmark-ghost" style="font-size: 28vw; top: -0.45em; left: 50%; transform: translateX(-50%); line-height: 1; opacity: 100;">RAWA</div>
 
   <div class="relative max-w-[1400px] mx-auto px-10 md:px-20 pt-24 pb-12 md:pt-28 md:pb-16 w-full text-cream">
 
     <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-20 items-end">
-      <!-- LEFT -->
       <div class="md:col-span-8 relative z-10" id="heroText">
 
         <div class="meta text-gold-soft mb-10 flex items-center gap-4 hero-reveal">
@@ -490,7 +478,6 @@
       </div>
     </div>
 
-    <!-- Sub-copy + CTA -->
     <div class="mt-12 sm:mt-14 md:mt-16 grid grid-cols-1 md:grid-cols-12 gap-12 hero-reveal">
       <div class="md:col-span-7 md:col-start-6 lg:col-span-5 lg:col-start-7">
         <p class="font-body text-lg sm:text-xl md:text-2xl leading-[1.5] text-cream" style="font-weight: 300;">
@@ -513,14 +500,11 @@
   </div>
 </section>
 
-<!-- ====================================================== -->
-<!-- 2. WHAT WE DO — Bolder + Accordion                      -->
-<!-- ====================================================== -->
+<!-- what we do -->
 <section id="practice" class="relative bg-cream py-32 md:py-48 overflow-hidden">
   <div class="absolute -bottom-20 -left-20 wordmark-ghost wordmark-ghost-warm" style="font-size: 28vw;">PRACTICE</div>
 
   <div class="relative max-w-[1400px] mx-auto px-10 md:px-20">
-    <!-- Header -->
     <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-24 md:mb-32">
       <div class="md:col-span-11">
         <h2 class="font-display lowercase leading-[0.92] text-navy practice-heading"
@@ -542,7 +526,6 @@
       </div>
     </div>
 
-    <!-- 6 Pillars — Accordion -->
     <div class="border-t border-navy-15" id="pillarList">
 
       <div class="pillar" data-pillar="0">
@@ -734,14 +717,11 @@
   </div>
 </section>
 
-<!-- ====================================================== -->
-<!-- 2b. THE FOUNDATION — Founders 3D Carousel               -->
-<!-- ====================================================== -->
+<!-- the foundation -->
 <section id="foundation" class="relative bg-navy py-32 md:py-48 overflow-hidden">
   <div class="absolute -top-10 -left-20 wordmark-ghost" style="font-size: 22vw;">TEAM</div>
 
   <div class="relative max-w-[1400px] mx-auto px-10 md:px-20">
-    <!-- Header -->
     <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-20 md:mb-28">
       <div class="md:col-span-11">
         <div class="meta text-gold-soft mb-10 flex items-center gap-4 foundation-reveal">
@@ -760,7 +740,6 @@
       </div>
     </div>
 
-    <!-- 3D Carousel wrapper — tall for scroll pinning -->
     <div id="founderSection" style="height: 200vh;">
       <div id="founderCarousel" class="relative flex items-center justify-center" style="height: 100vh; perspective: 1200px;">
         <div id="carouselTrack" class="relative flex items-center justify-center" style="width: 100%; height: 480px; transform-style: preserve-3d;">
@@ -811,7 +790,6 @@
 
         </div>
 
-        <!-- Progress dots -->
         <div class="absolute bottom-12 left-0 right-0 flex justify-center gap-3" id="carouselDots">
           <button class="w-2.5 h-2.5 rounded-full carousel-dot active" data-dot="0" aria-label="Founder 1"></button>
           <button class="w-2.5 h-2.5 rounded-full carousel-dot" data-dot="1" aria-label="Founder 2"></button>
@@ -828,14 +806,11 @@
   </div>
 </section>
 
-<!-- ====================================================== -->
-<!-- 3. TRACK RECORD — Three.js 3D Timeline                  -->
-<!-- ====================================================== -->
+<!-- track record -->
 <section id="track" class="relative bg-navy text-cream overflow-hidden">
   <div class="absolute top-1/4 -right-20 wordmark-ghost" style="font-size: 28vw;">TRACK</div>
 
   <div class="relative max-w-[1400px] mx-auto px-10 md:px-20 pt-20 md:pt-48">
-    <!-- Header -->
     <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-10 md:mb-20">
       <div class="md:col-span-7">
         <div class="meta text-gold-soft mb-10 flex items-center gap-4 track-reveal">
@@ -856,16 +831,13 @@
     </div>
   </div>
 
-  <!-- 3D Timeline (desktop) — tall enough for ScrollTrigger pin -->
   <div id="timeline-section" style="height: 300vh;">
     <div id="timeline-3d-wrap">
       <canvas id="timeline-canvas"></canvas>
-      <!-- Info overlays rendered by JS -->
       <div id="tl-overlays"></div>
     </div>
   </div>
 
-  <!-- 2D Fallback Timeline (mobile) -->
   <div class="timeline-2d relative px-6 py-6 md:py-12" id="timeline2d">
     <div class="tl2d-line"></div>
     <div class="tl2d-progress" id="tl2dProgress"></div>
@@ -929,7 +901,6 @@
     </div>
   </div>
 
-  <!-- Featured Case — Pola -->
   <div class="relative max-w-[1400px] mx-auto px-10 md:px-20 pb-32 md:pb-48">
     <div class="border-t border-cream-15 pt-20 md:pt-24">
       <div class="meta text-gold-soft mb-10 flex items-center gap-4">
@@ -986,13 +957,10 @@
   </div>
 </section>
 
-<!-- ====================================================== -->
-<!-- 4. CONTACT + PRESENCE                                   -->
-<!-- ====================================================== -->
+<!-- contact -->
 <section id="contact" class="relative bg-cream-warm py-32 md:py-48 overflow-hidden">
   <div class="absolute -bottom-20 right-0 wordmark-ghost wordmark-ghost-warm" style="font-size: 26vw;">NEXT</div>
 
-  <!-- Sparkles -->
   <div id="sparkleContainer" class="absolute inset-0 pointer-events-none overflow-hidden"></div>
 
   <div class="relative max-w-[1400px] mx-auto px-10 md:px-20">
@@ -1060,17 +1028,13 @@
 </section>
 
 <script>
-/* ============================================================
-   INIT
-   ============================================================ */
+// init
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 if (window.lucide) lucide.createIcons();
 
 const isMobile = window.innerWidth < 768;
 
-/* ============================================================
-   1. CUSTOM CURSOR
-   ============================================================ */
+// custom cursor
 if (!isMobile) {
   const cursor = document.getElementById('cursorDot');
   if (cursor) {
@@ -1093,9 +1057,7 @@ if (!isMobile) {
   }
 }
 
-/* ============================================================
-   2. INTRO ANIMATION + HERO REVEALS
-   ============================================================ */
+// intro animation
 document.body.classList.add('intro-active');
 
 const introOverlay = document.getElementById('introOverlay');
@@ -1105,7 +1067,6 @@ const mainNav = document.getElementById('mainNav');
 const sideNav = document.querySelector('.side-nav');
 if (sideNav) sideNav.style.opacity = '0';
 
-// Split intro sub-text into individual letter spans
 const introSub = document.getElementById('introSub');
 let subChars = [];
 if (introSub) {
@@ -1124,13 +1085,13 @@ const introTL = gsap.timeline({
 });
 
 introTL
-  // Phase 1: Fade in "RAWA" centered
+  // Fade in "RAWA" centered
   .to(introText, {
     opacity: 1,
     duration: 0.8,
     ease: 'power2.out'
   })
-  // Phase 2: Per-letter reveal of sub-text
+  //Per-letter reveal of sub-text
   .to(subChars, {
     opacity: 0.7,
     y: 0,
@@ -1138,15 +1099,15 @@ introTL
     stagger: 0.025,
     ease: 'power2.out'
   })
-  // Phase 2b: Hold for reading
+  //Hold for reading
   .to(introSub, { duration: 1.0 })
-  // Phase 2c: Fade out sub-text
+  //Fade out sub-text
   .to(subChars, {
     opacity: 0,
     duration: 0.5,
     ease: 'power2.in'
   })
-  // Phase 3: Scale up + move to ghost position + fade color
+  //Scale up + move to ghost position + fade color
   .to(introText, {
     fontSize: '28vw',
     color: 'rgba(244,241,236,0.045)',
@@ -1156,18 +1117,18 @@ introTL
     duration: 1.2,
     ease: 'power3.inOut'
   })
-  // Phase 4: Fade out overlay, reveal hero
+  //  Fade out overlay, reveal hero
   .to(introOverlay, {
     opacity: 0,
     duration: 0.6,
     ease: 'power2.inOut'
   }, '-=0.4')
-  // Show ghost wordmark at same time
+  // ghostwordmark
   .to(ghostWordmark, {
     opacity: 1,
     duration: 0.01
   }, '<')
-  // Phase 5: Reveal nav + side nav + hero elements
+  // reveal 
   .to(mainNav, {
     opacity: 1,
     duration: 0.8,
@@ -1184,20 +1145,8 @@ introTL
     ease: 'power3.out'
   }, '-=0.6');
 
-// Hero parallax disabled — hero is locked to h-screen, parallax caused
-// content to look like it was "overlay"-ing the next section on scroll.
-// gsap.to('#heroText', {
-//   y: -80,
-//   ease: 'none',
-//   scrollTrigger: {
-//     trigger: '#top',
-//     start: 'top top',
-//     end: 'bottom top',
-//     scrub: 1
-//   }
-// });
 
-// Video fallback
+
 const heroVideo = document.getElementById('heroVideo');
 if (heroVideo) {
   heroVideo.play().catch(() => {
@@ -1206,9 +1155,7 @@ if (heroVideo) {
   });
 }
 
-/* ============================================================
-   3. SIDE DOT NAVIGATION
-   ============================================================ */
+// side dot 
 const sideDots = document.querySelectorAll('.side-nav__dot');
 const navLinks = document.querySelectorAll('.nav-link');
 
@@ -1235,7 +1182,6 @@ sideDots.forEach(dot => {
   });
 });
 
-// Smooth scroll for nav links
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', (e) => {
     e.preventDefault();
@@ -1259,7 +1205,6 @@ gsap.from('.practice-sub', {
   scrollTrigger: { trigger: '.practice-sub', start: 'top 85%' }
 });
 
-// SVG underline draw on scroll
 ['svgWord1', 'svgWord2'].forEach(id => {
   ScrollTrigger.create({
     trigger: '#' + id,
@@ -1271,7 +1216,6 @@ gsap.from('.practice-sub', {
   });
 });
 
-// Pillar stagger
 gsap.from('.pillar', {
   x: -40, opacity: 0, duration: 0.7,
   stagger: 0.12,
@@ -1279,7 +1223,6 @@ gsap.from('.pillar', {
   scrollTrigger: { trigger: '#pillarList', start: 'top 75%' }
 });
 
-// Accordion click
 document.querySelectorAll('.pillar').forEach(p => {
   p.addEventListener('click', () => {
     const wasActive = p.classList.contains('active');
@@ -1332,7 +1275,6 @@ gsap.from('.foundation-reveal', {
       }
     });
 
-    // Update dots
     const frontIndex = getFrontCardIndex(angle);
     dots.forEach((dot, i) => {
       dot.classList.toggle('active', i === frontIndex);
@@ -1350,10 +1292,8 @@ gsap.from('.foundation-reveal', {
     return bestIdx;
   }
 
-  // Initial position
   positionCards(0);
 
-  // Scroll-driven rotation
   ScrollTrigger.create({
     trigger: '#founderSection',
     start: 'top top',
@@ -1361,13 +1301,12 @@ gsap.from('.foundation-reveal', {
     pin: '#founderCarousel',
     scrub: 0.6,
     onUpdate: (self) => {
-      // Full rotation = scroll through entire section
       currentAngle = self.progress * Math.PI * 2;
       positionCards(currentAngle);
     }
   });
 
-  // Dot clicks — no-op since it's scroll driven, but nice visual feedback
+  // Scroll-driven; dot clicks just jump to the matching scroll position.
   dots.forEach((dot, i) => {
     dot.addEventListener('click', () => {
       const target = document.getElementById('founderSection');
@@ -1445,13 +1384,11 @@ if (!isMobile && window.THREE) {
   }
   fitCameraToScene();
 
-  // Ambient + point lights
   scene.add(new THREE.AmbientLight(0xf4f1ec, 0.4));
   const pointLight = new THREE.PointLight(0xc79a4f, 1.5, 15);
   pointLight.position.set(0, 4, 4);
   scene.add(pointLight);
 
-  // Define curved path
   const pathPoints = [
     new THREE.Vector3(-7, 0, 0),
     new THREE.Vector3(-3.5, 0.8, -1),
@@ -1461,31 +1398,26 @@ if (!isMobile && window.THREE) {
   ];
   const curve = new THREE.CatmullRomCurve3(pathPoints);
 
-  // Rail line — full (dim)
   const railPoints = curve.getPoints(200);
   const railGeo = new THREE.BufferGeometry().setFromPoints(railPoints);
   const railMat = new THREE.LineBasicMaterial({ color: 0xf4f1ec, transparent: true, opacity: 0.1 });
   scene.add(new THREE.Line(railGeo, railMat));
 
-  // Rail line — progress (bright gold)
   const progressGeo = new THREE.BufferGeometry().setFromPoints(railPoints);
   const progressMat = new THREE.LineBasicMaterial({ color: 0xc79a4f, transparent: true, opacity: 0.9 });
   const progressLine = new THREE.Line(progressGeo, progressMat);
   scene.add(progressLine);
 
-  // Glow particle
   const glowGeo = new THREE.SphereGeometry(0.08, 16, 16);
   const glowMat = new THREE.MeshBasicMaterial({ color: 0xc79a4f });
   const glowSphere = new THREE.Mesh(glowGeo, glowMat);
   scene.add(glowSphere);
 
-  // Glow halo
   const haloGeo = new THREE.SphereGeometry(0.2, 16, 16);
   const haloMat = new THREE.MeshBasicMaterial({ color: 0xc79a4f, transparent: true, opacity: 0.15 });
   const halo = new THREE.Mesh(haloGeo, haloMat);
   scene.add(halo);
 
-  // Node spheres
   const nodePositions = [0, 0.333, 0.666, 1.0];
   const nodeSpheres = [];
   nodePositions.forEach((t) => {
@@ -1498,7 +1430,6 @@ if (!isMobile && window.THREE) {
     nodeSpheres.push(mesh);
   });
 
-  // Photo planes
   const loader = new THREE.TextureLoader();
   const photoPlanes = [];
   const photoGroup = new THREE.Group();
@@ -1554,7 +1485,6 @@ if (!isMobile && window.THREE) {
     }, i * 500);
   });
 
-  // HTML overlays
   const overlayContainer = document.getElementById('tl-overlays');
   const infoEls = [];
   if (overlayContainer) {
@@ -1572,7 +1502,6 @@ if (!isMobile && window.THREE) {
     });
   }
 
-  // Raycaster for hover
   const raycaster = new THREE.Raycaster();
   const mouse = new THREE.Vector2(-10, -10);
   let hoveredPlane = null;
@@ -1583,7 +1512,6 @@ if (!isMobile && window.THREE) {
     mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
   });
 
-  // Scroll progress
   let scrollProgress = 0;
 
   ScrollTrigger.create({
@@ -1595,25 +1523,21 @@ if (!isMobile && window.THREE) {
     onUpdate: (self) => { scrollProgress = self.progress; }
   });
 
-  // Animation loop
   const clock = new THREE.Clock();
 
   function animate() {
     requestAnimationFrame(animate);
     const time = clock.getElapsedTime();
 
-    // Move glow along curve
     const clampedProgress = Math.max(0, Math.min(1, scrollProgress));
     const glowPos = curve.getPointAt(clampedProgress);
     glowSphere.position.copy(glowPos);
     halo.position.copy(glowPos);
     halo.scale.setScalar(1 + Math.sin(time * 3) * 0.15);
 
-    // Update progress line
     const progressCount = Math.floor(clampedProgress * 200) + 1;
     progressGeo.setDrawRange(0, Math.min(progressCount, 201));
 
-    // Determine active node
     let activeIdx = 0;
     let minDist = Infinity;
     nodePositions.forEach((t, i) => {
@@ -1621,18 +1545,15 @@ if (!isMobile && window.THREE) {
       if (d < minDist) { minDist = d; activeIdx = i; }
     });
 
-    // Update photo planes
     photoPlanes.forEach((plane, i) => {
       const isActive = (i === activeIdx && minDist < 0.15);
       const targetOpacity = isActive ? 1.0 : 0.25;
       const targetScale = isActive ? 1.0 : 0.7;
       plane.material.opacity += (targetOpacity - plane.material.opacity) * 0.08;
       plane.scale.lerp(new THREE.Vector3(targetScale, targetScale, targetScale), 0.08);
-      // Float
       plane.position.y = plane.userData.baseY + Math.sin(time * 0.8 + i * 1.2) * 0.08;
     });
 
-    // Update node spheres
     nodeSpheres.forEach((s, i) => {
       const isActive = (i === activeIdx && minDist < 0.15);
       s.material.opacity = isActive ? 1.0 : 0.4;
@@ -1640,7 +1561,6 @@ if (!isMobile && window.THREE) {
       s.scale.lerp(new THREE.Vector3(ns, ns, ns), 0.1);
     });
 
-    // Raycaster hover
     raycaster.setFromCamera(mouse, camera);
     const intersects = raycaster.intersectObjects(photoPlanes);
     if (intersects.length > 0) {
@@ -1655,7 +1575,6 @@ if (!isMobile && window.THREE) {
       hoveredPlane = null;
     }
 
-    // Position HTML overlays
     infoEls.forEach((el, i) => {
       const pos3d = curve.getPointAt(nodePositions[i]).clone();
       pos3d.y -= 0.8;
@@ -1669,14 +1588,12 @@ if (!isMobile && window.THREE) {
       el.classList.toggle('active', isActive);
     });
 
-    // Gentle camera sway
     camera.position.x = Math.sin(time * 0.15) * 0.3;
 
     renderer.render(scene, camera);
   }
   animate();
 
-  // Resize
   window.addEventListener('resize', fitCameraToScene);
 }
 
@@ -1719,7 +1636,6 @@ if (isMobile) {
     });
   });
 
-  // 2D progress line
   const tl2dWrap = document.getElementById('timeline2d');
   const tl2dProgress = document.getElementById('tl2dProgress');
   if (tl2dWrap && tl2dProgress) {
@@ -1745,7 +1661,6 @@ gsap.from('.contact-reveal', {
   scrollTrigger: { trigger: '.contact-reveal', start: 'top 80%' }
 });
 
-// Presence hover glow
 document.querySelectorAll('.presence-item').forEach(item => {
   item.addEventListener('mouseenter', () => {
     gsap.to(item, { x: 8, color: '#c79a4f', duration: 0.3 });
@@ -1755,7 +1670,6 @@ document.querySelectorAll('.presence-item').forEach(item => {
   });
 });
 
-// Sparkles
 const sparkleContainer = document.getElementById('sparkleContainer');
 if (sparkleContainer) {
   for (let i = 0; i < 20; i++) {
