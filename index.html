@@ -37,25 +37,8 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
-    cursor: none;
   }
   .h-screen-dvh { height: 100vh; height: 100dvh; }
-  @media (max-width: 767px) { body { cursor: auto; } }
-
-  /* Custom cursor */
-  .cursor-dot {
-    position: fixed;
-    top: 0; left: 0;
-    width: 12px; height: 12px;
-    background: var(--gold);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    mix-blend-mode: difference;
-    transition: transform 0.15s ease;
-  }
-  .cursor-dot.hovering { transform: scale(3.5); }
-  @media (max-width: 767px) { .cursor-dot { display: none; } }
 
   /* TYPOGRAPHY */
   .font-display {
@@ -117,9 +100,6 @@
   .wordmark-ghost-warm { color: rgba(168,124,46,0.06); }
 
   .circle-mask { border-radius: 50%; overflow: hidden; }
-  .tl2d-slideshow { position: relative; }
-  .tl2d-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 800ms ease; }
-  .tl2d-slide.is-active { opacity: 1; }
   .hair { height: 1px; background: currentColor; opacity: 0.2; }
   .nav-blend { mix-blend-mode: difference; }
   .vertical-rl { writing-mode: vertical-rl; transform: rotate(180deg); }
@@ -205,92 +185,52 @@
   }
   .side-nav__dot:hover .side-nav__label { opacity: 1; }
 
-  /* Three.js timeline container */
-  #timeline-3d-wrap {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    min-height: 600px;
+  /* Track record — static gallery */
+  .track-gallery {
+    display: flex;
+    flex-direction: column;
   }
-  #timeline-canvas {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+  .track-brand {
+    padding: 2.5rem 0;
+    border-top: 1px solid rgba(244,241,236,0.1);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
-
-  /* Timeline info overlays */
-  .tl-info {
-    position: absolute;
-    pointer-events: none;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-    text-align: center;
-    width: 220px;
-    margin-left: -110px;
+  .track-brand:last-child { border-bottom: 1px solid rgba(244,241,236,0.1); }
+  @media (min-width: 768px) {
+    .track-brand {
+      grid-template-columns: 260px 1fr;
+      gap: 3rem;
+      padding: 3.5rem 0;
+      align-items: start;
+    }
   }
-  .tl-info.active {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
+  .track-photos {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    padding-bottom: 0.75rem;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(199,154,79,0.4) transparent;
   }
-
-  /* Mobile 2D fallback timeline */
-  .timeline-2d { display: none; }
-  @media (max-width: 767px) {
-    .timeline-2d { display: block; }
-    #timeline-3d-wrap { display: none; }
-    #timeline-section { height: auto !important; }
+  .track-photos::-webkit-scrollbar { height: 6px; }
+  .track-photos::-webkit-scrollbar-track { background: transparent; }
+  .track-photos::-webkit-scrollbar-thumb {
+    background: rgba(199,154,79,0.4);
+    border-radius: 3px;
   }
-  .tl2d-line {
-    position: absolute;
-    left: 50%; top: 0; bottom: 0;
-    width: 2px;
-    background: rgba(244,241,236,0.12);
-    transform: translateX(-50%);
+  .track-photos img {
+    display: block;
+    height: 200px;
+    width: auto;
+    max-width: none;
+    flex-shrink: 0;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(199,154,79,0.2);
   }
-  .tl2d-progress {
-    position: absolute;
-    left: 50%; top: 0;
-    width: 2px; height: 0%;
-    background: linear-gradient(180deg, var(--gold-soft), var(--gold));
-    transform: translateX(-50%);
-    transition: height 0.1s linear;
-  }
-  .tl2d-node {
-    position: relative;
-    padding: 2rem 0;
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  .tl2d-node.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-  .tl2d-dot {
-    position: absolute;
-    left: 50%; top: 2.5rem;
-    width: 12px; height: 12px;
-    border-radius: 50%;
-    background: var(--gold-soft);
-    transform: translate(-50%, -50%);
-    z-index: 2;
-    box-shadow: 0 0 8px rgba(168,124,46,0.3);
-  }
-  .tl2d-content {
-    width: 42%;
-    background: rgba(244,241,236,0.04);
-    border: 1px solid rgba(244,241,236,0.1);
-    border-radius: 1rem;
-    padding: 1.5rem;
-  }
-  .tl2d-node:nth-child(odd) .tl2d-content { margin-left: 55%; }
-  .tl2d-node:nth-child(even) .tl2d-content { margin-right: 55%; margin-left: 3%; }
-  @media (max-width: 767px) {
-    .tl2d-content { width: 75%; margin-left: 15% !important; margin-right: 0 !important; }
-    .tl2d-dot { left: 8%; }
-    .tl2d-line, .tl2d-progress { left: 8%; }
+  @media (min-width: 768px) {
+    .track-photos img { height: 260px; }
   }
 
   /* SVG underline */
@@ -413,9 +353,6 @@
   <div id="introText" class="font-logo">RAWA</div>
   <p id="introSub" class="meta">Form without substance is an empty space. Substance without form has nowhere to live.</p>
 </div>
-
-<!-- CUSTOM CURSOR -->
-<div class="cursor-dot" id="cursorDot"></div>
 
 <!-- SIDE DOT NAVIGATION -->
 <div class="side-nav hidden md:flex" aria-label="Section navigation">
@@ -833,73 +770,70 @@
     </div>
   </div>
 
-  <div id="timeline-section" style="height: 300vh;">
-    <div id="timeline-3d-wrap">
-      <canvas id="timeline-canvas"></canvas>
-      <div id="tl-overlays"></div>
-    </div>
-  </div>
+  <div class="relative max-w-[1400px] mx-auto px-10 md:px-20 pb-16 md:pb-24">
+    <div class="track-gallery">
 
-  <div class="timeline-2d relative px-6 py-6 md:py-12" id="timeline2d">
-    <div class="tl2d-line"></div>
-    <div class="tl2d-progress" id="tl2dProgress"></div>
-
-    <div class="tl2d-node" data-year="YYYY">
-      <div class="tl2d-dot"></div>
-      <div class="tl2d-content">
-        <div class="circle-mask w-28 h-28 mx-auto mb-4 overflow-hidden tl2d-slideshow"
-             data-slides="0 (4).png,0 (5).png,0 (6).png"
-             data-slide-base="assets/img/trackrecord/urban/"
-             data-slide-interval="2000"></div>
-        <div class="meta text-gold-soft mb-2">YYYY</div>
-        <h4 class="font-display lowercase text-xl text-cream mb-1 leading-snug">
-          urban dhukun<br>bhumi<br>urban healing
-        </h4>
-        <div class="meta text-cream-50 mb-3">TBA</div>
-        <p class="font-body text-sm text-cream-70">—</p>
+      <div class="track-brand track-reveal">
+        <div class="track-brand__meta">
+          <div class="meta text-gold-soft mb-3">YYYY</div>
+          <h4 class="font-display lowercase text-2xl md:text-3xl text-cream leading-snug">
+            urban dhukun<br/>bhumi<br/>
+            <span class="text-cream-50">urban healing</span>
+          </h4>
+          <div class="meta text-cream-50 mt-3">TBA</div>
+        </div>
+        <div class="track-photos">
+          <img src="assets/img/trackrecord/urban/0 (4).png" alt="urban healing" loading="lazy">
+          <img src="assets/img/trackrecord/urban/0 (5).png" alt="" loading="lazy">
+          <img src="assets/img/trackrecord/urban/0 (6).png" alt="" loading="lazy">
+        </div>
       </div>
-    </div>
 
-    <div class="tl2d-node" data-year="YYYY">
-      <div class="tl2d-dot"></div>
-      <div class="tl2d-content">
-        <div class="circle-mask w-28 h-28 mx-auto mb-4 overflow-hidden tl2d-slideshow"
-             data-slides="j1.jpeg,j2.jpeg,j3.jpeg,j4.jpeg,j5.jpeg,j6.jpeg"
-             data-slide-base="assets/img/trackrecord/jemari/"
-             data-slide-interval="2000"></div>
-        <div class="meta text-gold-soft mb-2">YYYY</div>
-        <h4 class="font-display lowercase text-xl text-cream mb-1">jemari</h4>
-        <div class="meta text-cream-50 mb-3">TBA</div>
-        <p class="font-body text-sm text-cream-70">—</p>
+      <div class="track-brand track-reveal">
+        <div class="track-brand__meta">
+          <div class="meta text-gold-soft mb-3">YYYY</div>
+          <h4 class="font-display lowercase text-2xl md:text-3xl text-cream leading-snug">jemari</h4>
+          <div class="meta text-cream-50 mt-3">TBA</div>
+        </div>
+        <div class="track-photos">
+          <img src="assets/img/trackrecord/jemari/j1.jpeg" alt="jemari" loading="lazy">
+          <img src="assets/img/trackrecord/jemari/j2.jpeg" alt="" loading="lazy">
+          <img src="assets/img/trackrecord/jemari/j3.jpeg" alt="" loading="lazy">
+          <img src="assets/img/trackrecord/jemari/j4.jpeg" alt="" loading="lazy">
+          <img src="assets/img/trackrecord/jemari/j5.jpeg" alt="" loading="lazy">
+          <img src="assets/img/trackrecord/jemari/j6.jpeg" alt="" loading="lazy">
+        </div>
       </div>
-    </div>
 
-    <div class="tl2d-node" data-year="YYYY">
-      <div class="tl2d-dot"></div>
-      <div class="tl2d-content">
-        <div class="circle-mask w-28 h-28 mx-auto mb-4 overflow-hidden tl2d-slideshow"
-             data-slides="p.jpeg,p1.jpeg,p2.jpeg,p3.jpeg,p4.jpeg,p5.jpeg"
-             data-slide-base="assets/img/trackrecord/pola/"
-             data-slide-interval="2000"></div>
-        <div class="meta text-gold-soft mb-2">YYYY</div>
-        <h4 class="font-display lowercase text-xl text-cream mb-1">wellness cinere</h4>
-        <div class="meta text-cream-50 mb-3">TBA</div>
-        <p class="font-body text-sm text-cream-70">—</p>
+      <div class="track-brand track-reveal">
+        <div class="track-brand__meta">
+          <div class="meta text-gold-soft mb-3">YYYY</div>
+          <h4 class="font-display lowercase text-2xl md:text-3xl text-cream leading-snug">wellness cinere</h4>
+          <div class="meta text-cream-50 mt-3">TBA</div>
+        </div>
+        <div class="track-photos">
+          <img src="assets/img/trackrecord/pola/p.jpeg" alt="wellness cinere" loading="lazy">
+          <img src="assets/img/trackrecord/pola/p1.jpeg" alt="" loading="lazy">
+          <img src="assets/img/trackrecord/pola/p2.jpeg" alt="" loading="lazy">
+          <img src="assets/img/trackrecord/pola/p3.jpeg" alt="" loading="lazy">
+          <img src="assets/img/trackrecord/pola/p4.jpeg" alt="" loading="lazy">
+          <img src="assets/img/trackrecord/pola/p5.jpeg" alt="" loading="lazy">
+        </div>
       </div>
-    </div>
 
-    <div class="tl2d-node" data-year="YYYY">
-      <div class="tl2d-dot"></div>
-      <div class="tl2d-content">
-        <div class="circle-mask w-28 h-28 mx-auto mb-4 overflow-hidden tl2d-slideshow"
-             data-slides="a1.jpeg,a2.jpeg,a3.jpeg"
-             data-slide-base="assets/img/trackrecord/amarta/"
-             data-slide-interval="2000"></div>
-        <div class="meta text-gold-soft mb-2">YYYY</div>
-        <h4 class="font-display lowercase text-xl text-cream mb-1">amarta</h4>
-        <div class="meta text-cream-50 mb-3">TBA</div>
-        <p class="font-body text-sm text-cream-70">—</p>
+      <div class="track-brand track-reveal">
+        <div class="track-brand__meta">
+          <div class="meta text-gold-soft mb-3">YYYY</div>
+          <h4 class="font-display lowercase text-2xl md:text-3xl text-cream leading-snug">amarta</h4>
+          <div class="meta text-cream-50 mt-3">TBA</div>
+        </div>
+        <div class="track-photos">
+          <img src="assets/img/trackrecord/amarta/a1.jpeg" alt="amarta" loading="lazy">
+          <img src="assets/img/trackrecord/amarta/a2.jpeg" alt="" loading="lazy">
+          <img src="assets/img/trackrecord/amarta/a3.jpeg" alt="" loading="lazy">
+        </div>
       </div>
+
     </div>
   </div>
 
@@ -1036,29 +970,6 @@ if (window.lucide) lucide.createIcons();
 
 const isMobile = window.innerWidth < 768;
 
-// custom cursor
-if (!isMobile) {
-  const cursor = document.getElementById('cursorDot');
-  if (cursor) {
-    let cx = 0, cy = 0, mx = 0, my = 0;
-
-    document.addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; });
-
-    function animateCursor() {
-      cx += (mx - cx) * 0.15;
-      cy += (my - cy) * 0.15;
-      cursor.style.transform = `translate(${cx - 6}px, ${cy - 6}px)`;
-      requestAnimationFrame(animateCursor);
-    }
-    animateCursor();
-
-    document.querySelectorAll('.cursor-interactive, a, button').forEach(el => {
-      el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
-      el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
-    });
-  }
-}
-
 // intro animation
 document.body.classList.add('intro-active');
 
@@ -1122,7 +1033,7 @@ introTL
   //  Fade out overlay, reveal hero
   .to(introOverlay, {
     opacity: 0,
-    duration: 1.0,
+    duration: 1.5,
     ease: 'power2.inOut'
   }, '-=0.4')
   // ghostwordmark
@@ -1323,13 +1234,14 @@ gsap.from('.foundation-reveal', {
 })();
 
 /* ============================================================
-   5. TRACK RECORD — GSAP reveals
+   5. TRACK RECORD — GSAP reveals (per element, static gallery)
    ============================================================ */
-gsap.from('.track-reveal', {
-  y: 30, opacity: 0, duration: 0.8,
-  stagger: 0.15,
-  ease: 'power3.out',
-  scrollTrigger: { trigger: '.track-reveal', start: 'top 80%' }
+gsap.utils.toArray('.track-reveal').forEach((el) => {
+  gsap.from(el, {
+    y: 30, opacity: 0, duration: 0.8,
+    ease: 'power3.out',
+    scrollTrigger: { trigger: el, start: 'top 85%' }
+  });
 });
 
 gsap.from('.featured-reveal', {
@@ -1340,321 +1252,7 @@ gsap.from('.featured-reveal', {
 });
 
 /* ============================================================
-   6. THREE.JS 3D TIMELINE (Desktop only)
-   ============================================================ */
-if (!isMobile && window.THREE) {
-  const timelineData = [
-    { year: 'YYYY', name: 'urban dhukun<br>bhumi<br>urban healing', loc: 'TBA', desc: '—',
-      base: 'assets/img/trackrecord/urban/',  slides: ['0 (4).png','0 (5).png','0 (6).png'] },
-    { year: 'YYYY', name: 'jemari',          loc: 'TBA', desc: '—',
-      base: 'assets/img/trackrecord/jemari/', slides: ['j1.jpeg','j2.jpeg','j3.jpeg','j4.jpeg','j5.jpeg','j6.jpeg'] },
-    { year: 'YYYY', name: 'wellness cinere', loc: 'TBA', desc: '—',
-      base: 'assets/img/trackrecord/pola/',   slides: ['p.jpeg','p1.jpeg','p2.jpeg','p3.jpeg','p4.jpeg','p5.jpeg'] },
-    { year: 'YYYY', name: 'amarta',          loc: 'TBA', desc: '—',
-      base: 'assets/img/trackrecord/amarta/', slides: ['a1.jpeg','a2.jpeg','a3.jpeg'] }
-  ];
-
-  const wrap = document.getElementById('timeline-3d-wrap');
-  const canvas = document.getElementById('timeline-canvas');
-
-  const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x0a2540);
-  scene.fog = new THREE.Fog(0x0a2540, 8, 25);
-
-  const camera = new THREE.PerspectiveCamera(55, wrap.clientWidth / wrap.clientHeight, 0.1, 100);
-  camera.position.set(0, 2.5, 8);
-  camera.lookAt(0, 0.5, 0);
-
-  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-  function fitCameraToScene() {
-    const w = wrap.clientWidth;
-    const h = wrap.clientHeight;
-    const aspect = w / h;
-    camera.aspect = aspect;
-    const fovRad = camera.fov * Math.PI / 180;
-    // Horizontal extent of the curve+planes: ~16 units (-7..7 plus plane margins)
-    const horizontalExtent = 16;
-    const distH = (horizontalExtent / 2) / (Math.tan(fovRad / 2) * aspect);
-    // Vertical extent including floating photo planes: ~8 units
-    const distV = 4 / Math.tan(fovRad / 2);
-    camera.position.z = Math.max(distH, distV, 8);
-    camera.lookAt(0, 0.5, 0);
-    camera.updateProjectionMatrix();
-    renderer.setSize(w, h);
-  }
-  fitCameraToScene();
-
-  scene.add(new THREE.AmbientLight(0xf4f1ec, 0.4));
-  const pointLight = new THREE.PointLight(0xc79a4f, 1.5, 15);
-  pointLight.position.set(0, 4, 4);
-  scene.add(pointLight);
-
-  const pathPoints = [
-    new THREE.Vector3(-7, 0, 0),
-    new THREE.Vector3(-3.5, 0.8, -1),
-    new THREE.Vector3(0, 0, 0.5),
-    new THREE.Vector3(3.5, 0.6, -0.8),
-    new THREE.Vector3(7, 0, 0)
-  ];
-  const curve = new THREE.CatmullRomCurve3(pathPoints);
-
-  const railPoints = curve.getPoints(200);
-  const railGeo = new THREE.BufferGeometry().setFromPoints(railPoints);
-  const railMat = new THREE.LineBasicMaterial({ color: 0xf4f1ec, transparent: true, opacity: 0.1 });
-  scene.add(new THREE.Line(railGeo, railMat));
-
-  const progressGeo = new THREE.BufferGeometry().setFromPoints(railPoints);
-  const progressMat = new THREE.LineBasicMaterial({ color: 0xc79a4f, transparent: true, opacity: 0.9 });
-  const progressLine = new THREE.Line(progressGeo, progressMat);
-  scene.add(progressLine);
-
-  const glowGeo = new THREE.SphereGeometry(0.08, 16, 16);
-  const glowMat = new THREE.MeshBasicMaterial({ color: 0xc79a4f });
-  const glowSphere = new THREE.Mesh(glowGeo, glowMat);
-  scene.add(glowSphere);
-
-  const haloGeo = new THREE.SphereGeometry(0.2, 16, 16);
-  const haloMat = new THREE.MeshBasicMaterial({ color: 0xc79a4f, transparent: true, opacity: 0.15 });
-  const halo = new THREE.Mesh(haloGeo, haloMat);
-  scene.add(halo);
-
-  const nodePositions = [0, 0.333, 0.666, 1.0];
-  const nodeSpheres = [];
-  nodePositions.forEach((t) => {
-    const pos = curve.getPointAt(t);
-    const geo = new THREE.SphereGeometry(0.06, 12, 12);
-    const mat = new THREE.MeshBasicMaterial({ color: 0xc79a4f, transparent: true, opacity: 0.5 });
-    const mesh = new THREE.Mesh(geo, mat);
-    mesh.position.copy(pos);
-    scene.add(mesh);
-    nodeSpheres.push(mesh);
-  });
-
-  const loader = new THREE.TextureLoader();
-  const photoPlanes = [];
-  const photoGroup = new THREE.Group();
-
-  timelineData.forEach((item, i) => {
-    const t = nodePositions[i];
-    const pos = curve.getPointAt(t);
-    const yOffset = (i % 2 === 0) ? 1.8 : 2.2;
-    const zTilt = (i % 2 === 0) ? 0.2 : -0.2;
-
-    const geo = new THREE.PlaneGeometry(1.6, 1.6);
-    const mat = new THREE.MeshBasicMaterial({
-      transparent: true, opacity: 0.3, side: THREE.DoubleSide
-    });
-
-    const textures = item.slides.map(file => loader.load(
-      item.base + file,
-      (tex) => { mat.needsUpdate = true; },
-      undefined,
-      (err) => console.error(`[Three.js] Failed to load texture: ${item.base + file}`, err)
-    ));
-    mat.map = textures[0];
-    mat.needsUpdate = true;
-
-    const plane = new THREE.Mesh(geo, mat);
-    plane.position.set(pos.x, pos.y + yOffset, pos.z + zTilt);
-    plane.rotation.y = zTilt * 1.5;
-    plane.userData = { baseY: pos.y + yOffset, index: i, baseOpacity: 0.3, textures: textures, slideIdx: 0 };
-    photoGroup.add(plane);
-    photoPlanes.push(plane);
-  });
-  scene.add(photoGroup);
-
-  // Auto-cycle slideshow per plane (match mobile 2s interval, ~800ms total crossfade)
-  const SLIDE_INTERVAL = 2000;
-  const FADE_DUR = 0.4;
-  photoPlanes.forEach((plane, i) => {
-    const textures = plane.userData.textures;
-    if (!textures || textures.length < 2) return;
-    setTimeout(() => {
-      setInterval(() => {
-        const mat = plane.material;
-        gsap.to(mat, {
-          opacity: 0, duration: FADE_DUR, ease: 'power2.in',
-          onComplete: () => {
-            plane.userData.slideIdx = (plane.userData.slideIdx + 1) % textures.length;
-            mat.map = textures[plane.userData.slideIdx];
-            mat.needsUpdate = true;
-            gsap.to(mat, { opacity: plane.userData.baseOpacity, duration: FADE_DUR, ease: 'power2.out' });
-          }
-        });
-      }, SLIDE_INTERVAL);
-    }, i * 500);
-  });
-
-  const overlayContainer = document.getElementById('tl-overlays');
-  const infoEls = [];
-  if (overlayContainer) {
-    timelineData.forEach((item, i) => {
-      const div = document.createElement('div');
-      div.className = 'tl-info';
-      div.innerHTML = `
-        <div class="meta text-gold-soft mb-2">${item.year}</div>
-        <h4 class="font-display lowercase text-xl md:text-2xl text-cream mb-1">${item.name}</h4>
-        <div class="meta text-cream-50 mb-2" style="font-size:10px;">${item.loc}</div>
-        <p class="font-body text-sm text-cream-70">${item.desc}</p>
-      `;
-      overlayContainer.appendChild(div);
-      infoEls.push(div);
-    });
-  }
-
-  const raycaster = new THREE.Raycaster();
-  const mouse = new THREE.Vector2(-10, -10);
-  let hoveredPlane = null;
-
-  wrap.addEventListener('mousemove', (e) => {
-    const rect = wrap.getBoundingClientRect();
-    mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-    mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
-  });
-
-  let scrollProgress = 0;
-
-  ScrollTrigger.create({
-    trigger: '#timeline-section',
-    start: 'top top',
-    end: 'bottom bottom',
-    pin: '#timeline-3d-wrap',
-    scrub: 0.5,
-    onUpdate: (self) => { scrollProgress = self.progress; }
-  });
-
-  const clock = new THREE.Clock();
-
-  function animate() {
-    requestAnimationFrame(animate);
-    const time = clock.getElapsedTime();
-
-    const clampedProgress = Math.max(0, Math.min(1, scrollProgress));
-    const glowPos = curve.getPointAt(clampedProgress);
-    glowSphere.position.copy(glowPos);
-    halo.position.copy(glowPos);
-    halo.scale.setScalar(1 + Math.sin(time * 3) * 0.15);
-
-    const progressCount = Math.floor(clampedProgress * 200) + 1;
-    progressGeo.setDrawRange(0, Math.min(progressCount, 201));
-
-    let activeIdx = 0;
-    let minDist = Infinity;
-    nodePositions.forEach((t, i) => {
-      const d = Math.abs(clampedProgress - t);
-      if (d < minDist) { minDist = d; activeIdx = i; }
-    });
-
-    photoPlanes.forEach((plane, i) => {
-      const isActive = (i === activeIdx && minDist < 0.15);
-      const targetOpacity = isActive ? 1.0 : 0.25;
-      const targetScale = isActive ? 1.0 : 0.7;
-      plane.material.opacity += (targetOpacity - plane.material.opacity) * 0.08;
-      plane.scale.lerp(new THREE.Vector3(targetScale, targetScale, targetScale), 0.08);
-      plane.position.y = plane.userData.baseY + Math.sin(time * 0.8 + i * 1.2) * 0.08;
-    });
-
-    nodeSpheres.forEach((s, i) => {
-      const isActive = (i === activeIdx && minDist < 0.15);
-      s.material.opacity = isActive ? 1.0 : 0.4;
-      const ns = isActive ? 1.5 : 1.0;
-      s.scale.lerp(new THREE.Vector3(ns, ns, ns), 0.1);
-    });
-
-    raycaster.setFromCamera(mouse, camera);
-    const intersects = raycaster.intersectObjects(photoPlanes);
-    if (intersects.length > 0) {
-      const hit = intersects[0].object;
-      if (hoveredPlane !== hit) {
-        if (hoveredPlane) hoveredPlane.material.emissive && (hoveredPlane.material.emissive = new THREE.Color(0));
-        hoveredPlane = hit;
-      }
-      hit.scale.lerp(new THREE.Vector3(1.15, 1.15, 1.15), 0.1);
-      document.body.style.cursor = isMobile ? 'auto' : 'none';
-    } else {
-      hoveredPlane = null;
-    }
-
-    infoEls.forEach((el, i) => {
-      const pos3d = curve.getPointAt(nodePositions[i]).clone();
-      pos3d.y -= 0.8;
-      pos3d.project(camera);
-      const x = (pos3d.x * 0.5 + 0.5) * wrap.clientWidth;
-      const y = (-pos3d.y * 0.5 + 0.5) * wrap.clientHeight;
-      el.style.left = x + 'px';
-      el.style.top = y + 'px';
-
-      const isActive = (i === activeIdx && minDist < 0.15);
-      el.classList.toggle('active', isActive);
-    });
-
-    camera.position.x = Math.sin(time * 0.15) * 0.3;
-
-    renderer.render(scene, camera);
-  }
-  animate();
-
-  window.addEventListener('resize', fitCameraToScene);
-}
-
-/* ============================================================
-   7. MOBILE 2D TIMELINE — GSAP reveals
-   ============================================================ */
-if (isMobile) {
-  document.querySelectorAll('.tl2d-slideshow[data-slides]').forEach(el => {
-    const base = el.dataset.slideBase || '';
-    const files = el.dataset.slides.split(',').map(s => s.trim()).filter(Boolean);
-    const interval = parseInt(el.dataset.slideInterval, 10) || 3000;
-    if (files.length < 2) return;
-    el.innerHTML = '';
-    const imgs = files.map((file, i) => {
-      const img = document.createElement('img');
-      img.src = base + file;
-      img.alt = '';
-      img.className = 'tl2d-slide w-full h-full object-cover' + (i === 0 ? ' is-active' : '');
-      img.loading = 'lazy';
-      el.appendChild(img);
-      return img;
-    });
-    let idx = 0;
-    setInterval(() => {
-      imgs[idx].classList.remove('is-active');
-      idx = (idx + 1) % imgs.length;
-      imgs[idx].classList.add('is-active');
-    }, interval);
-  });
-
-  document.querySelectorAll('.tl2d-node').forEach((node, i) => {
-    gsap.to(node, {
-      opacity: 1, y: 0, duration: 0.6,
-      delay: i * 0.1,
-      scrollTrigger: {
-        trigger: node,
-        start: 'top 85%',
-        onEnter: () => node.classList.add('is-visible')
-      }
-    });
-  });
-
-  const tl2dWrap = document.getElementById('timeline2d');
-  const tl2dProgress = document.getElementById('tl2dProgress');
-  if (tl2dWrap && tl2dProgress) {
-    ScrollTrigger.create({
-      trigger: tl2dWrap,
-      start: 'top 80%',
-      end: 'bottom 20%',
-      scrub: true,
-      onUpdate: (self) => {
-        tl2dProgress.style.height = (self.progress * 100) + '%';
-      }
-    });
-  }
-}
-
-/* ============================================================
-   8. CONTACT — GSAP reveals + sparkles + presence hover
+   6. CONTACT — GSAP reveals + sparkles + presence hover
    ============================================================ */
 gsap.from('.contact-reveal', {
   y: 30, opacity: 0, duration: 0.8,
